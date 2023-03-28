@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import waits.Waiting;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class CustomersPage {
@@ -18,7 +21,7 @@ public class CustomersPage {
     }
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[1]")
-    private WebElement fistNameSixthCustomerTd;
+    private WebElement firstNameSixthCustomerTd;
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[2]")
     private WebElement lastNameSixthCustomerTd;
@@ -26,20 +29,13 @@ public class CustomersPage {
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[3]")
     private WebElement postCodeSixthCustomerTd;
 
+    @FindBy(xpath = "//tr[contains(@class,'ng-scope')]//td[1]")
+    private List<WebElement> firstNameCustomersList;
+
+
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
     private WebElement firstNameFirstCustomerTd;
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[2]//td)[1]")
-    private WebElement firstNameSecondCustomerTd;
-
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[3]//td)[1]")
-    private WebElement firstNameThirdCustomerTd;
-
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[4]//td)[1]")
-    private WebElement firstNameFourthCustomerTd;
-
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[5]//td)[1]")
-    private WebElement firstNameFifthCustomerTd;
 
     @FindBy(xpath = "//a[contains(text(),'First Name')]")
     private WebElement sortByFirstNameButton;
@@ -74,35 +70,23 @@ public class CustomersPage {
 
     @Step("Нажатие кнопки для сортировки по первому имени")
     public CustomersPage clickSortByFirstNameButton() {
-        sortByFirstNameButton.click();
+        Waiting.waitingElementsDisplay(sortByFirstNameButton, driver).click();
         return this;
     }
 
     @Step("Получение первого имени пятого клиента из списка")
-    public String getFirstNameFifthCustomer() {
-        return firstNameFifthCustomerTd.getText();
-    }
-
-    @Step("Получение первого имени четвертого клиента из списка")
-    public String getFirstNameFourthCustomer() {
-        return firstNameFourthCustomerTd.getText();
-    }
-
-
-    @Step("Получение первого имени третьего клиента из списка")
-    public String getFirstNameThirdCustomer() {
-        return firstNameThirdCustomerTd.getText();
-    }
-
-
-    @Step("Получение первого имени второго клиента из списка")
-    public String getFirstNameSecondCustomer() {
-        return firstNameSecondCustomerTd.getText();
-    }
-
-    @Step("Получение первого имени первого клиента из списка")
     public String getFirstNameFirstCustomer() {
         return Waiting.waitingElementsDisplay(firstNameFirstCustomerTd, driver).getText();
+    }
+
+
+    @Step("Получение первого имени всех клиентов из списка")
+    public ArrayList<String> getFirstNameCustomersList() {
+        ArrayList<String> firstNameList = new ArrayList<>();
+        for (WebElement we : firstNameCustomersList) {
+            firstNameList.add(we.getText());
+        }
+        return firstNameList;
     }
 
 
@@ -118,6 +102,6 @@ public class CustomersPage {
 
     @Step("Получение First Name у шестого клиента")
     public String getFirstNameAtSixthCustomer() {
-        return Waiting.waitingElementsDisplay(fistNameSixthCustomerTd, driver).getText();
+        return Waiting.waitingElementsDisplay(firstNameSixthCustomerTd, driver).getText();
     }
 }

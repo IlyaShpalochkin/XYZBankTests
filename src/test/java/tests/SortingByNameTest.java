@@ -5,9 +5,11 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AddCustomerPage;
 import pages.CustomersPage;
 import pages.MainPage;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 @Epic("Тесты сайта globalsqa")
 
@@ -30,19 +32,14 @@ public class SortingByNameTest extends BasicTestClass {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
         Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Hermoine");
+        ArrayList<String> firstNameFirstList = customersPage.getFirstNameCustomersList();
         customersPage.clickSortByFirstNameButton();
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Ron");
-        Assert.assertEquals(customersPage.getFirstNameSecondCustomer(), "Neville");
-        Assert.assertEquals(customersPage.getFirstNameThirdCustomer(), "Hermoine");
-        Assert.assertEquals(customersPage.getFirstNameFourthCustomer(), "Harry");
-        Assert.assertEquals(customersPage.getFirstNameFifthCustomer(), "Albus");
+        ArrayList<String> reverseSortFirstNameList = customersPage.getFirstNameCustomersList();
+        Collections.sort(firstNameFirstList, Collections.reverseOrder());
+        Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList);
         customersPage.clickSortByFirstNameButton();
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Albus");
-        Assert.assertEquals(customersPage.getFirstNameSecondCustomer(), "Harry");
-        Assert.assertEquals(customersPage.getFirstNameThirdCustomer(), "Hermoine");
-        Assert.assertEquals(customersPage.getFirstNameFourthCustomer(), "Neville");
-        Assert.assertEquals(customersPage.getFirstNameFifthCustomer(), "Ron");
+        ArrayList<String> sortFirstNameList = customersPage.getFirstNameCustomersList();
+        Collections.sort(firstNameFirstList);
+        Assert.assertEquals(sortFirstNameList, firstNameFirstList);
     }
-
-
 }
