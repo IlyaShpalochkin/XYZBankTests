@@ -24,7 +24,7 @@ public class SearchCustomerTest extends BasicTestClass {
     @Severity(value = SeverityLevel.NORMAL)
     @Feature("Тесты на главной странице")
     @Story("Поиск клиента")
-    @Test(priority = 1)
+    @Test
     public void searchCustomerTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();

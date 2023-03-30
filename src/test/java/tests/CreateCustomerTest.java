@@ -12,7 +12,6 @@ import pages.MainPage;
 
 
 @Epic("Тесты сайта globalsqa")
-
 public class CreateCustomerTest extends BasicTestClass {
     public MainPage mainPage;
     public AddCustomerPage addCustomerPage;
@@ -29,7 +28,7 @@ public class CreateCustomerTest extends BasicTestClass {
     @Severity(value = SeverityLevel.NORMAL)
     @Feature("Тесты на главной странице")
     @Story("Добавление клиента")
-    @Test(priority = 1)
+    @Test
     public void createClientTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickAddCustomerButton();

@@ -6,7 +6,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 public class AlertHelper {
-    @Step("Получение текста aler'a")
+    @Step("Получение текста alert'a")
     public static String getAlertMessage(WebDriver driver) {
         Alert alert = driver.switchTo().alert();
         return alert.getText();

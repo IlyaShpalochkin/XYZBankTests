@@ -7,9 +7,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomersPage;
 import pages.MainPage;
+import pages.TablePage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 @Epic("Тесты сайта globalsqa")
 
@@ -27,18 +29,23 @@ public class SortingByNameTest extends BasicTestClass {
     @Severity(value = SeverityLevel.NORMAL)
     @Feature("Тесты на главной странице")
     @Story("Сортировка по имени")
-    @Test(priority = 1)
+    @Test
     public void sortingByNameTest() {
+        var firstCustomerName = new TablePage(driver)
+                .getRows()
+                .stream()
+                .map(it -> it.getCellText(0))
+                .collect(Collectors.toList());
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
         Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Hermoine");
-        ArrayList<String> firstNameFirstList = customersPage.getFirstNameCustomersList();
+        ArrayList<String> firstNameFirstList = (ArrayList<String>) firstCustomerName;
         customersPage.clickSortByFirstNameButton();
-        ArrayList<String> reverseSortFirstNameList = customersPage.getFirstNameCustomersList();
+        String reverseSortFirstNameList = firstCustomerName.toString();
         Collections.sort(firstNameFirstList, Collections.reverseOrder());
         Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList);
         customersPage.clickSortByFirstNameButton();
-        ArrayList<String> sortFirstNameList = customersPage.getFirstNameCustomersList();
+        ArrayList<String> sortFirstNameList = (ArrayList<String>) firstCustomerName;
         Collections.sort(firstNameFirstList);
         Assert.assertEquals(sortFirstNameList, firstNameFirstList);
     }

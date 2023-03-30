@@ -1,6 +1,6 @@
 package tests;
 
-import chromeDriver.GetChromeDriver;
+import chromeDriver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -10,7 +10,7 @@ abstract public class BasicTestClass {
 
     @BeforeMethod
     public void driver() {
-        driver = GetChromeDriver.getChromeDriver();
+        driver = DriverManager.getChromeDriver();
         driver.manage().window().maximize();
     }
 

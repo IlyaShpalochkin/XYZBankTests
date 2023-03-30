@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +32,10 @@ public class CustomersPage {
 
     @FindBy(xpath = "//tr[contains(@class,'ng-scope')]//td[1]")
     private List<WebElement> firstNameCustomersList;
+
+
+
+    /*private ArrayList<WebElement> firstNameCustomersList = new ArrayList<>(driver.findElements(By.xpath("//tr[contains(@class,'ng-scope')]//td[1]")));*/
 
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
