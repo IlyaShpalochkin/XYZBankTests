@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomersPage;
 import pages.MainPage;
-import pages.TablePage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +30,7 @@ public class SortingByNameTest extends BasicTestClass {
     @Story("Сортировка по имени")
     @Test
     public void sortingByNameTest() {
-        var firstCustomerName = new TablePage(driver)
+        var firstCustomerName = new CustomersPage(driver)
                 .getRows()
                 .stream()
                 .map(it -> it.getCellText(0))

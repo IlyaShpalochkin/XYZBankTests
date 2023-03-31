@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import waits.Waiting;
 
 import java.util.ArrayList;
@@ -33,14 +34,8 @@ public class CustomersPage {
     @FindBy(xpath = "//tr[contains(@class,'ng-scope')]//td[1]")
     private List<WebElement> firstNameCustomersList;
 
-
-
-    /*private ArrayList<WebElement> firstNameCustomersList = new ArrayList<>(driver.findElements(By.xpath("//tr[contains(@class,'ng-scope')]//td[1]")));*/
-
-
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
     private WebElement firstNameFirstCustomerTd;
-
 
     @FindBy(xpath = "//a[contains(text(),'First Name')]")
     private WebElement sortByFirstNameButton;
@@ -84,14 +79,16 @@ public class CustomersPage {
         return Waiting.waitingElementsDisplay(firstNameFirstCustomerTd, driver).getText();
     }
 
+    @FindBy(css = "tbody tr")
+    private List<WebElement> rows;
 
-    @Step("Получение первого имени всех клиентов из списка")
-    public ArrayList<String> getFirstNameCustomersList() {
-        ArrayList<String> firstNameList = new ArrayList<>();
-        for (WebElement we : firstNameCustomersList) {
-            firstNameList.add(we.getText());
+
+    public List<Row> getRows() {
+        var newList = new ArrayList<Row>();
+        for (WebElement row : rows) {
+            newList.add(new Row(row));
         }
-        return firstNameList;
+        return newList;
     }
 
 
