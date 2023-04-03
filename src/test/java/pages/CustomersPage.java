@@ -1,11 +1,9 @@
 package pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import waits.Waiting;
 
 import java.util.ArrayList;
@@ -22,17 +20,14 @@ public class CustomersPage {
         initElements(driver, this);
     }
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[1]")
-    private WebElement firstNameSixthCustomerTd;
+    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[1]")
+    private WebElement firstNameLastCustomerTd;
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[2]")
-    private WebElement lastNameSixthCustomerTd;
+    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[2]")
+    private WebElement lastNameLastCustomerTd;
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[6]//td)[3]")
-    private WebElement postCodeSixthCustomerTd;
-
-    @FindBy(xpath = "//tr[contains(@class,'ng-scope')]//td[1]")
-    private List<WebElement> firstNameCustomersList;
+    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[3]")
+    private WebElement postCodeLastCustomerTd;
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
     private WebElement firstNameFirstCustomerTd;
@@ -92,18 +87,18 @@ public class CustomersPage {
     }
 
 
-    @Step("Получение Post Code у шестого клиента")
-    public String getPostCodeAtSixthCustomer() {
-        return Waiting.waitingElementsDisplay(postCodeSixthCustomerTd, driver).getText();
+    @Step("Получение Post Code у последнего клиента")
+    public String getPostCodeAtLastCustomer() {
+        return Waiting.waitingElementsDisplay(postCodeLastCustomerTd, driver).getText();
     }
 
-    @Step("Получение Last Name у шестого клиента")
-    public String getLastNameAtSixthCustomer() {
-        return Waiting.waitingElementsDisplay(lastNameSixthCustomerTd, driver).getText();
+    @Step("Получение Last Name у последнего клиента")
+    public String getLastNameAtLastCustomer() {
+        return Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver).getText();
     }
 
     @Step("Получение First Name у шестого клиента")
-    public String getFirstNameAtSixthCustomer() {
-        return Waiting.waitingElementsDisplay(firstNameSixthCustomerTd, driver).getText();
+    public String getFirstNameAtLastCustomer() {
+        return Waiting.waitingElementsDisplay(firstNameLastCustomerTd, driver).getText();
     }
 }
