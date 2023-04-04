@@ -8,6 +8,7 @@ import waits.Waiting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
@@ -30,7 +31,7 @@ public class CustomersPage {
     private WebElement postCodeLastCustomerTd;
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
-    private WebElement firstNameFirstCustomerTd;
+    private WebElement nameFirstCustomerTd;
 
     @FindBy(xpath = "//a[contains(text(),'First Name')]")
     private WebElement sortByFirstNameButton;
@@ -43,6 +44,9 @@ public class CustomersPage {
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[3]")
     private WebElement postCodeFirstCustomer;
+
+    @FindBy(css = "tbody tr")
+    private List<WebElement> rows;
 
     @Step("Получение Почтового индекса первого пользователя из списка")
     public String getPostCodeFirstCustomerText() {
@@ -69,15 +73,22 @@ public class CustomersPage {
         return this;
     }
 
-    @Step("Получение первого имени пятого клиента из списка")
+    @Step("Получение первого имени первого клиента из списка")
     public String getFirstNameFirstCustomer() {
-        return Waiting.waitingElementsDisplay(firstNameFirstCustomerTd, driver).getText();
+        return Waiting.waitingElementsDisplay(nameFirstCustomerTd, driver).getText();
     }
 
-    @FindBy(css = "tbody tr")
-    private List<WebElement> rows;
+    @Step("Получение списка всех имен клиенктов")
+    public ArrayList<String> getFirstNameCustomers() {
+        var firstCustomerName = new CustomersPage(driver)
+                .getRows()
+                .stream()
+                .map(it -> it.getCellText(0))
+                .collect(Collectors.toList());
+        return (ArrayList) firstCustomerName;
+    }
 
-
+    @Step("Получение строк списка клиентов")
     public List<Row> getRows() {
         var newList = new ArrayList<Row>();
         for (WebElement row : rows) {
@@ -85,7 +96,6 @@ public class CustomersPage {
         }
         return newList;
     }
-
 
     @Step("Получение Post Code у последнего клиента")
     public String getPostCodeAtLastCustomer() {

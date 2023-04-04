@@ -10,7 +10,6 @@ import pages.MainPage;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.stream.Collectors;
 
 @Epic("Тесты сайта globalsqa")
 
@@ -30,21 +29,16 @@ public class SortingByNameTest extends BasicTestClass {
     @Story("Сортировка по имени")
     @Test
     public void sortingByNameTest() {
-        var firstCustomerName = new CustomersPage(driver)
-                .getRows()
-                .stream()
-                .map(it -> it.getCellText(0))
-                .collect(Collectors.toList());
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
         Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Hermoine");
-        ArrayList<String> firstNameFirstList = (ArrayList<String>) firstCustomerName;
+        ArrayList<String> firstNameFirstList = customersPage.getFirstNameCustomers();
         customersPage.clickSortByFirstNameButton();
-        String reverseSortFirstNameList = firstCustomerName.toString();
+        ArrayList<String> reverseSortFirstNameList = customersPage.getFirstNameCustomers();
         Collections.sort(firstNameFirstList, Collections.reverseOrder());
         Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList);
         customersPage.clickSortByFirstNameButton();
-        ArrayList<String> sortFirstNameList = (ArrayList<String>) firstCustomerName;
+        ArrayList<String> sortFirstNameList = customersPage.getFirstNameCustomers();
         Collections.sort(firstNameFirstList);
         Assert.assertEquals(sortFirstNameList, firstNameFirstList);
     }
