@@ -78,6 +78,7 @@ public class CustomersPage {
         return Waiting.waitingElementsDisplay(nameFirstCustomerTd, driver).getText();
     }
 
+
     @Step("Получение списка всех имен клиенктов")
     public ArrayList<String> getFirstNameCustomers() {
         var firstCustomerName = new CustomersPage(driver)
@@ -105,6 +106,11 @@ public class CustomersPage {
     @Step("Получение Last Name у последнего клиента")
     public String getLastNameAtLastCustomer() {
         return Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver).getText();
+    }
+
+    @Step("Ожидание появления последнего клиента")
+    public void waitingLastNameAtLastCustomerVisible() {
+        Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver);
     }
 
     @Step("Получение First Name у шестого клиента")

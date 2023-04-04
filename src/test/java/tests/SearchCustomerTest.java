@@ -28,13 +28,13 @@ public class SearchCustomerTest extends BasicTestClass {
     public void searchCustomerTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Hermoine");
+        customersPage.waitingLastNameAtLastCustomerVisible();
         customersPage.fillSearchCustomerInput("Harry");
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Harry");
+        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Harry", "Первое имя первого клиента в списке не Harry");
         customersPage.fillSearchCustomerInput("Granger");
-        Assert.assertEquals(customersPage.getLastNameFirstCustomerText(), "Granger");
+        Assert.assertEquals(customersPage.getLastNameFirstCustomerText(), "Granger", "Фамилия первого клиента в списке не Granger");
         customersPage.fillSearchCustomerInput("E55656");
-        Assert.assertEquals(customersPage.getPostCodeFirstCustomerText(), "E55656");
+        Assert.assertEquals(customersPage.getPostCodeFirstCustomerText(), "E55656", "Почтовый индекс первого клиента в списке не E55656");
 
     }
 

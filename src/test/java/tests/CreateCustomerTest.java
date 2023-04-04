@@ -39,9 +39,9 @@ public class CreateCustomerTest extends BasicTestClass {
         Assert.assertEquals(AlertHelper.getAlertMessage(driver), "Customer added successfully with customer id :6");
         AlertHelper.clickOkButton(driver);
         mainPage.clickCustomersButton();
-        Assert.assertEquals(customersPage.getFirstNameAtLastCustomer(), "Ilya");
-        Assert.assertEquals(customersPage.getLastNameAtLastCustomer(), "Ponomarev");
-        Assert.assertEquals(customersPage.getPostCodeAtLastCustomer(), "Code1111");
+        Assert.assertEquals(customersPage.getFirstNameAtLastCustomer(), "Ilya", "Имя последнего клиента в списке не Ilya");
+        Assert.assertEquals(customersPage.getLastNameAtLastCustomer(), "Ponomarev", "Фамилия последнего клиента в списке не Ponomarev");
+        Assert.assertEquals(customersPage.getPostCodeAtLastCustomer(), "Code1111", "Почтовый индекс последнего клиента в списке не Code1111");
     }
 
 

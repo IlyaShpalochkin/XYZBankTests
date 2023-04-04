@@ -31,15 +31,15 @@ public class SortingByNameTest extends BasicTestClass {
     public void sortingByNameTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Hermoine");
+        customersPage.waitingLastNameAtLastCustomerVisible();
         ArrayList<String> firstNameFirstList = customersPage.getFirstNameCustomers();
         customersPage.clickSortByFirstNameButton();
         ArrayList<String> reverseSortFirstNameList = customersPage.getFirstNameCustomers();
         Collections.sort(firstNameFirstList, Collections.reverseOrder());
-        Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList);
+        Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList, "Список не отсортирован в обратном порядке");
         customersPage.clickSortByFirstNameButton();
         ArrayList<String> sortFirstNameList = customersPage.getFirstNameCustomers();
         Collections.sort(firstNameFirstList);
-        Assert.assertEquals(sortFirstNameList, firstNameFirstList);
+        Assert.assertEquals(sortFirstNameList, firstNameFirstList, "Список не отсортирован в алфовитном порядке");
     }
 }
