@@ -14,5 +14,4 @@ public class DriverManager {
         options.addArguments("--remote-allow-origins=*");
         return new ChromeDriver(options);
     }
-
 }

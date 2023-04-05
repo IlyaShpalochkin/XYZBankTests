@@ -38,13 +38,11 @@ public class CustomersPage {
     private List<WebElement> rows;
 
 
-    @Step("Получение Почтового индекса первого пользователя из списка")
     public String getPostCodeFirstCustomerText() {
         return getRows().get(0).getCellText(2);
     }
 
 
-    @Step("Получение Фамилии первого пользователя из списка")
     public String getLastNameFirstCustomerText() {
         return getRows().get(0).getCellText(1);
     }
@@ -63,13 +61,11 @@ public class CustomersPage {
         return this;
     }
 
-    @Step("Получение первого имени первого клиента из списка")
     public String getFirstNameFirstCustomer() {
         return getRows().get(0).getCellText(0);
     }
 
 
-    @Step("Получение списка всех имен клиенктов")
     public ArrayList<String> getFirstNameCustomers() {
         var firstCustomerName = new CustomersPage(driver)
                 .getRows()
@@ -79,7 +75,6 @@ public class CustomersPage {
         return (ArrayList) firstCustomerName;
     }
 
-    @Step("Получение строк списка клиентов")
     public List<Row> getRows() {
         var newList = new ArrayList<Row>();
         for (WebElement row : rows) {
@@ -88,12 +83,10 @@ public class CustomersPage {
         return newList;
     }
 
-    @Step("Получение Post Code у последнего клиента")
     public String getPostCodeAtLastCustomer() {
         return getRows().get(5).getCellText(2);
     }
 
-    @Step("Получение Last Name у последнего клиента")
     public String getLastNameAtLastCustomer() {
         return getRows().get(5).getCellText(1);
     }
@@ -103,7 +96,6 @@ public class CustomersPage {
         Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver);
     }
 
-    @Step("Получение First Name у шестого клиента")
     public String getFirstNameAtLastCustomer() {
         return getRows().get(5).getCellText(0);
     }
