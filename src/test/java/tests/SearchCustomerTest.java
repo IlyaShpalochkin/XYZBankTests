@@ -35,7 +35,6 @@ public class SearchCustomerTest extends BasicTestClass {
         Assert.assertEquals(customersPage.getLastNameFirstCustomerText(), "Granger", "Фамилия первого клиента в списке не Granger");
         customersPage.fillSearchCustomerInput("E55656");
         Assert.assertEquals(customersPage.getPostCodeFirstCustomerText(), "E55656", "Почтовый индекс первого клиента в списке не E55656");
-
     }
 
 }

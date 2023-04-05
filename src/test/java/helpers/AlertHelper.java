@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class AlertHelper {
     @Step("Получение текста alert'a")
     public static String getAlertMessage(WebDriver driver) {
-        Alert alert = driver.switchTo().alert();
-        return alert.getText();
+        return driver.switchTo().alert().getText();
     }
 
     @Step("Нажатие кнопки Ок в alert'e")

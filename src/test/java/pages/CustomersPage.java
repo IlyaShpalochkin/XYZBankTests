@@ -21,14 +21,9 @@ public class CustomersPage {
         initElements(driver, this);
     }
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[1]")
-    private WebElement firstNameLastCustomerTd;
-
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[2]")
     private WebElement lastNameLastCustomerTd;
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[3]")
-    private WebElement postCodeLastCustomerTd;
 
     @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
     private WebElement nameFirstCustomerTd;
@@ -39,24 +34,19 @@ public class CustomersPage {
     @FindBy(css = "[placeholder='Search Customer']")
     private WebElement searchCustomerInput;
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[2]")
-    private WebElement lastNameFirstCustomer;
-
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[3]")
-    private WebElement postCodeFirstCustomer;
-
     @FindBy(css = "tbody tr")
     private List<WebElement> rows;
 
+
     @Step("Получение Почтового индекса первого пользователя из списка")
     public String getPostCodeFirstCustomerText() {
-        return Waiting.waitingElementsDisplay(postCodeFirstCustomer, driver).getText();
+        return getRows().get(0).getCellText(2);
     }
 
 
     @Step("Получение Фамилии первого пользователя из списка")
     public String getLastNameFirstCustomerText() {
-        return Waiting.waitingElementsDisplay(lastNameFirstCustomer, driver).getText();
+        return getRows().get(0).getCellText(1);
     }
 
 
@@ -75,7 +65,7 @@ public class CustomersPage {
 
     @Step("Получение первого имени первого клиента из списка")
     public String getFirstNameFirstCustomer() {
-        return Waiting.waitingElementsDisplay(nameFirstCustomerTd, driver).getText();
+        return getRows().get(0).getCellText(0);
     }
 
 
@@ -100,12 +90,12 @@ public class CustomersPage {
 
     @Step("Получение Post Code у последнего клиента")
     public String getPostCodeAtLastCustomer() {
-        return Waiting.waitingElementsDisplay(postCodeLastCustomerTd, driver).getText();
+        return getRows().get(5).getCellText(2);
     }
 
     @Step("Получение Last Name у последнего клиента")
     public String getLastNameAtLastCustomer() {
-        return Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver).getText();
+        return getRows().get(5).getCellText(1);
     }
 
     @Step("Ожидание появления последнего клиента")
@@ -115,6 +105,6 @@ public class CustomersPage {
 
     @Step("Получение First Name у шестого клиента")
     public String getFirstNameAtLastCustomer() {
-        return Waiting.waitingElementsDisplay(firstNameLastCustomerTd, driver).getText();
+        return getRows().get(5).getCellText(0);
     }
 }
