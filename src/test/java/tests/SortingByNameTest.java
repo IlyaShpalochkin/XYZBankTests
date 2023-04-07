@@ -1,7 +1,13 @@
 package tests;
 
 import constants.Constants;
-import io.qameta.allure.*;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Epic;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,7 +37,7 @@ public class SortingByNameTest extends BasicTestClass {
     public void sortingByNameTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
-        customersPage.waitingLastNameAtLastCustomerVisible();
+        customersPage.waitingLoadingListCustomersSize();
         ArrayList<String> firstNameFirstList = customersPage.getFirstNameCustomers();
         customersPage.clickSortByFirstNameButton();
         ArrayList<String> reverseSortFirstNameList = customersPage.getFirstNameCustomers();

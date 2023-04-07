@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,13 +22,6 @@ public class CustomersPage {
         initElements(driver, this);
     }
 
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[last()]//td)[2]")
-    private WebElement lastNameLastCustomerTd;
-
-
-    @FindBy(xpath = "((//tr[contains(@class,'ng-scope')])[1]//td)[1]")
-    private WebElement nameFirstCustomerTd;
-
     @FindBy(xpath = "//a[contains(text(),'First Name')]")
     private WebElement sortByFirstNameButton;
 
@@ -35,16 +29,22 @@ public class CustomersPage {
     private WebElement searchCustomerInput;
 
     @FindBy(css = "tbody tr")
-    private List<WebElement> rows;
+    private By rows;
+
+    @FindBy(css = "tbody tr")
+    private List<WebElement> rowsList;
+
+    @FindBy(xpath = "//td[text()='Ilya']")
+    private WebElement ilyaCustomer;
 
 
     public String getPostCodeFirstCustomerText() {
-        return getRows().get(0).getCellText(2);
+        return getRowsList().get(0).getCellText(2);
     }
 
 
     public String getLastNameFirstCustomerText() {
-        return getRows().get(0).getCellText(1);
+        return getRowsList().get(0).getCellText(1);
     }
 
 
@@ -62,41 +62,42 @@ public class CustomersPage {
     }
 
     public String getFirstNameFirstCustomer() {
-        return getRows().get(0).getCellText(0);
+        return getRowsList().get(0).getCellText(0);
     }
 
-
     public ArrayList<String> getFirstNameCustomers() {
-        var firstCustomerName = new CustomersPage(driver)
-                .getRows()
-                .stream()
-                .map(it -> it.getCellText(0))
-                .collect(Collectors.toList());
+        var firstCustomerName = new CustomersPage(driver).getRowsList().stream().map(it -> it.getCellText(0)).collect(Collectors.toList());
         return (ArrayList) firstCustomerName;
     }
 
-    public List<Row> getRows() {
+    public List<Row> getRowsList() {
         var newList = new ArrayList<Row>();
-        for (WebElement row : rows) {
+        for (WebElement row : rowsList) {
             newList.add(new Row(row));
         }
         return newList;
     }
 
     public String getPostCodeAtLastCustomer() {
-        return getRows().get(5).getCellText(2);
+        return getRowsList().get(5).getCellText(2);
     }
 
     public String getLastNameAtLastCustomer() {
-        return getRows().get(5).getCellText(1);
+        return getRowsList().get(5).getCellText(1);
     }
 
-    @Step("Ожидание появления последнего клиента")
-    public void waitingLastNameAtLastCustomerVisible() {
-        Waiting.waitingElementsDisplay(lastNameLastCustomerTd, driver);
+    @Step("Ожидание прогрузки пяти клиентов в таблице")
+    public void waitingLoadingListCustomersSize() {
+        Waiting.waitingLoadingElementsSize(new By.ByCssSelector("tbody tr"), driver);
+    }
+
+    @Step("Ожидание прогрузки пяти клиентов в таблице")
+    public CustomersPage waitingIlyaCustomerVisible() {
+        Waiting.waitingElementsDisplay(ilyaCustomer, driver);
+        return this;
     }
 
     public String getFirstNameAtLastCustomer() {
-        return getRows().get(5).getCellText(0);
+        return getRowsList().get(5).getCellText(0);
     }
 }
