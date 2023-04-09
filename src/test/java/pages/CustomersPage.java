@@ -28,8 +28,7 @@ public class CustomersPage {
     @FindBy(css = "[placeholder='Search Customer']")
     private WebElement searchCustomerInput;
 
-    @FindBy(css = "tbody tr")
-    private By rows;
+    private By rows = By.cssSelector("tbody tr");
 
     @FindBy(css = "tbody tr")
     private List<WebElement> rowsList;
@@ -57,7 +56,7 @@ public class CustomersPage {
 
     @Step("Нажатие кнопки для сортировки по первому имени")
     public CustomersPage clickSortByFirstNameButton() {
-        Waiting.waitingElementsDisplay(sortByFirstNameButton, driver).click();
+        Waiting.waitingElementsDisplayByWebelement(sortByFirstNameButton, driver).click();
         return this;
     }
 
@@ -79,25 +78,26 @@ public class CustomersPage {
     }
 
     public String getPostCodeAtLastCustomer() {
-        return getRowsList().get(5).getCellText(2);
+        return getRowsList().get(getRowsList().size() - 1).getCellText(2);
     }
 
     public String getLastNameAtLastCustomer() {
-        return getRowsList().get(5).getCellText(1);
-    }
-
-    @Step("Ожидание прогрузки пяти клиентов в таблице")
-    public void waitingLoadingListCustomersSize() {
-        Waiting.waitingLoadingElementsSize(new By.ByCssSelector("tbody tr"), driver);
-    }
-
-    @Step("Ожидание прогрузки пяти клиентов в таблице")
-    public CustomersPage waitingIlyaCustomerVisible() {
-        Waiting.waitingElementsDisplay(ilyaCustomer, driver);
-        return this;
+        return getRowsList().get(getRowsList().size() - 1).getCellText(1);
     }
 
     public String getFirstNameAtLastCustomer() {
-        return getRowsList().get(5).getCellText(0);
+        return getRowsList().get(getRowsList().size() - 1).getCellText(0);
     }
+
+    @Step("Ожидание прогрузки пяти клиентов в таблице")
+    public void waitingLoadingListCustomersSize(Integer size) {
+        Waiting.waitingLoadingElementsSize(rows, size, driver);
+    }
+
+    @Step("Ожидание клиента с именем Ilya")
+    public CustomersPage waitingIlyaCustomerVisible(String text) {
+        Waiting.waitingElementsDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
+        return this;
+    }
+
 }

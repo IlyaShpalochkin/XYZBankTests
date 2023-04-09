@@ -25,13 +25,13 @@ public class MainPage {
 
     @Step("Нажатие на кнопку Customers")
     public MainPage clickCustomersButton() {
-        Waiting.waitingElementsDisplay(customersButton, driver).click();
+        Waiting.waitingElementsDisplayByWebelement(customersButton, driver).click();
         return this;
     }
 
     @Step("Нажатие на кнопку Add Customer")
     public MainPage clickAddCustomerButton() {
-        Waiting.waitingElementsDisplay(addCustomerButton, driver).click();
+        Waiting.waitingElementsDisplayByWebelement(addCustomerButton, driver).click();
         return this;
     }
 
