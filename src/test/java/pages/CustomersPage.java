@@ -28,19 +28,14 @@ public class CustomersPage {
     @FindBy(css = "[placeholder='Search Customer']")
     private WebElement searchCustomerInput;
 
-    private By rows = By.cssSelector("tbody tr");
-
     @FindBy(css = "tbody tr")
     private List<WebElement> rowsList;
 
-    @FindBy(xpath = "//td[text()='Ilya']")
-    private WebElement ilyaCustomer;
-
+    private By rows = By.cssSelector("tbody tr");
 
     public String getPostCodeFirstCustomerText() {
         return getRowsList().get(0).getCellText(2);
     }
-
 
     public String getLastNameFirstCustomerText() {
         return getRowsList().get(0).getCellText(1);
@@ -64,7 +59,7 @@ public class CustomersPage {
         return getRowsList().get(0).getCellText(0);
     }
 
-    public ArrayList<String> getFirstNameCustomers() {
+    public ArrayList<String> getFirstNameCustomersList() {
         var firstCustomerName = new CustomersPage(driver).getRowsList().stream().map(it -> it.getCellText(0)).collect(Collectors.toList());
         return (ArrayList) firstCustomerName;
     }
@@ -89,13 +84,13 @@ public class CustomersPage {
         return getRowsList().get(getRowsList().size() - 1).getCellText(0);
     }
 
-    @Step("Ожидание прогрузки пяти клиентов в таблице")
+    @Step("Ожидание прогрузки списка строк с размером size")
     public void waitingLoadingListCustomersSize(Integer size) {
         Waiting.waitingLoadingElementsSize(rows, size, driver);
     }
 
-    @Step("Ожидание клиента с именем Ilya")
-    public CustomersPage waitingIlyaCustomerVisible(String text) {
+    @Step("Ожидание ячейки с текстом text")
+    public CustomersPage waitingCellWithTextVisible(String text) {
         Waiting.waitingElementsDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
         return this;
     }
