@@ -48,6 +48,4 @@ public class CreateCustomerTest extends BasicTestClass {
         Assert.assertEquals(customersPage.getLastNameAtLastCustomer(), "Ponomarev", "Фамилия последнего клиента в списке не Ponomarev");
         Assert.assertEquals(customersPage.getPostCodeAtLastCustomer(), "Code1111", "Почтовый индекс последнего клиента в списке не Code1111");
     }
-
-
 }

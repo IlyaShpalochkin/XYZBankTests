@@ -22,18 +22,15 @@ public class MainPage {
     @FindBy(css = "[ng-click*='showCust()']")
     private WebElement customersButton;
 
-
     @Step("Нажатие на кнопку Customers")
     public MainPage clickCustomersButton() {
-        Waiting.waitingElementsDisplayByWebelement(customersButton, driver).click();
+        Waiting.waitingElementDisplayByWebelement(customersButton, driver).click();
         return this;
     }
 
     @Step("Нажатие на кнопку Add Customer")
     public MainPage clickAddCustomerButton() {
-        Waiting.waitingElementsDisplayByWebelement(addCustomerButton, driver).click();
+        Waiting.waitingElementDisplayByWebelement(addCustomerButton, driver).click();
         return this;
     }
-
-
 }

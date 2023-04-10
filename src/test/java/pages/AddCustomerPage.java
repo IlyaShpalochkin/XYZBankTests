@@ -29,7 +29,6 @@ public class AddCustomerPage {
     @FindBy(xpath = "//button[text()='Add Customer']")
     private WebElement addCustomerButton;
 
-
     @Step("Нажатие на кнопку Add Customer")
     public AddCustomerPage clickAddCustomerButton() {
         addCustomerButton.click();
@@ -50,7 +49,7 @@ public class AddCustomerPage {
 
     @Step("Ввод данных в поле First Name")
     public AddCustomerPage fillFirstNameInput(String firstName) {
-        Waiting.waitingElementsDisplayByWebelement(firstNameInput, driver).sendKeys(firstName);
+        Waiting.waitingElementDisplayByWebelement(firstNameInput, driver).sendKeys(firstName);
         return this;
     }
 }

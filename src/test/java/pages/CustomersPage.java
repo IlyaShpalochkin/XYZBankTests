@@ -41,7 +41,6 @@ public class CustomersPage {
         return getRowsList().get(0).getCellText(1);
     }
 
-
     @Step("Ввод данных в поле Search Customer")
     public CustomersPage fillSearchCustomerInput(String input) {
         searchCustomerInput.clear();
@@ -51,7 +50,7 @@ public class CustomersPage {
 
     @Step("Нажатие кнопки для сортировки по первому имени")
     public CustomersPage clickSortByFirstNameButton() {
-        Waiting.waitingElementsDisplayByWebelement(sortByFirstNameButton, driver).click();
+        Waiting.waitingElementDisplayByWebelement(sortByFirstNameButton, driver).click();
         return this;
     }
 
@@ -59,9 +58,8 @@ public class CustomersPage {
         return getRowsList().get(0).getCellText(0);
     }
 
-    public ArrayList<String> getFirstNameCustomersList() {
-        var firstCustomerName = new CustomersPage(driver).getRowsList().stream().map(it -> it.getCellText(0)).collect(Collectors.toList());
-        return (ArrayList) firstCustomerName;
+    public ArrayList<String> firstNameCustomersList() {
+        return (ArrayList<String>) new CustomersPage(driver).getRowsList().stream().map(it -> it.getCellText(0)).collect(Collectors.toList());
     }
 
     public List<Row> getRowsList() {
@@ -86,13 +84,12 @@ public class CustomersPage {
 
     @Step("Ожидание прогрузки списка строк с размером size")
     public void waitingLoadingListCustomersSize(Integer size) {
-        Waiting.waitingLoadingElementsSize(rows, size, driver);
+        Waiting.waitingLoadingElementsListSize(rows, size, driver);
     }
 
     @Step("Ожидание ячейки с текстом text")
     public CustomersPage waitingCellWithTextVisible(String text) {
-        Waiting.waitingElementsDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
+        Waiting.waitingElementDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
         return this;
     }
-
 }

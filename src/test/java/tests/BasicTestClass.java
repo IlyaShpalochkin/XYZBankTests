@@ -14,10 +14,6 @@ abstract public class BasicTestClass {
         driver.manage().window().maximize();
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
-
     @AfterTest
     public void closeDriver() {
         driver.quit();
