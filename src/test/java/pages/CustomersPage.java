@@ -54,7 +54,7 @@ public class CustomersPage {
         return this;
     }
 
-    public String getFirstNameFirstCustomer() {
+    public String getFirstCustomerFirstName() {
         return getRowsList().get(0).getCellText(0);
     }
 

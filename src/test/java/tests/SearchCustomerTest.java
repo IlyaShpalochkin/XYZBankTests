@@ -34,7 +34,7 @@ public class SearchCustomerTest extends BasicTestClass {
         mainPage.clickCustomersButton();
         customersPage.waitingLoadingListCustomersSize(5);
         customersPage.fillSearchCustomerInput("Harry");
-        Assert.assertEquals(customersPage.getFirstNameFirstCustomer(), "Harry", "Первое имя первого клиента в списке не Harry");
+        Assert.assertEquals(customersPage.getFirstCustomerFirstName(), "Harry", "Первое имя первого клиента в списке не Harry");
         customersPage.fillSearchCustomerInput("Granger");
         Assert.assertEquals(customersPage.getLastNameFirstCustomerText(), "Granger", "Фамилия первого клиента в списке не Granger");
         customersPage.fillSearchCustomerInput("E55656");
