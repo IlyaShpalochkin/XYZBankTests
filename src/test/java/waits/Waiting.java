@@ -9,17 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Waiting {
-    public static WebElement waitingElementDisplayByWebelement(WebElement element, WebDriver driver) {
+    public static WebElement waitUntilVisibilityOfElement(WebElement element, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static WebElement waitingElementDisplayByLocator(By locator, WebDriver driver) {
+    public static WebElement waitUntilVisibilityOfElementLocated(By locator, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void waitingLoadingElementsListSize(By element, Integer size, WebDriver driver) {
+    public static void waitUntilNumberOfElementsToBeSize(By element, Integer size, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.numberOfElementsToBe(element, size));
     }

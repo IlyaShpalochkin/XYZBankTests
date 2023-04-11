@@ -49,7 +49,7 @@ public class AddCustomerPage {
 
     @Step("Ввод данных в поле First Name")
     public AddCustomerPage fillFirstNameInput(String firstName) {
-        Waiting.waitingElementDisplayByWebelement(firstNameInput, driver).sendKeys(firstName);
+        Waiting.waitUntilVisibilityOfElement(firstNameInput, driver).sendKeys(firstName);
         return this;
     }
 }

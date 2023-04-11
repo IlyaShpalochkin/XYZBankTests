@@ -37,7 +37,7 @@ public class SortingByNameTest extends BasicTestClass {
     public void sortingByNameTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
-        customersPage.waitingLoadingListCustomersSize(5);
+        customersPage.waitingUntilNumberOfRowsToBeSize(5);
         ArrayList<String> firstNameFirstList = customersPage.customersFirstNames();
         customersPage.clickSortByFirstNameButton();
         ArrayList<String> reverseSortFirstNameList = customersPage.customersFirstNames();

@@ -32,7 +32,7 @@ public class SearchCustomerTest extends BasicTestClass {
     public void searchCustomerTest() {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
-        customersPage.waitingLoadingListCustomersSize(5);
+        customersPage.waitingUntilNumberOfRowsToBeSize(5);
         customersPage.fillSearchCustomerInput("Harry");
         Assert.assertEquals(customersPage.getFirstCustomerFirstName(), "Harry", "Первое имя первого клиента в списке не Harry");
         customersPage.fillSearchCustomerInput("Granger");

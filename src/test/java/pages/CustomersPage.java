@@ -50,7 +50,7 @@ public class CustomersPage {
 
     @Step("Нажатие кнопки для сортировки по первому имени")
     public CustomersPage clickSortByFirstNameButton() {
-        Waiting.waitingElementDisplayByWebelement(sortByFirstNameButton, driver).click();
+        Waiting.waitUntilVisibilityOfElement(sortByFirstNameButton, driver).click();
         return this;
     }
 
@@ -83,13 +83,13 @@ public class CustomersPage {
     }
 
     @Step("Ожидание прогрузки списка строк с размером size")
-    public void waitingLoadingListCustomersSize(Integer size) {
-        Waiting.waitingLoadingElementsListSize(rows, size, driver);
+    public void waitingUntilNumberOfRowsToBeSize(Integer size) {
+        Waiting.waitUntilNumberOfElementsToBeSize(rows, size, driver);
     }
 
     @Step("Ожидание ячейки с текстом text")
-    public CustomersPage waitingVisibilityOfCellWithText(String text) {
-        Waiting.waitingElementDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
+    public CustomersPage waitingUntilVisibilityOfCellWithText(String text) {
+        Waiting.waitUntilVisibilityOfElementLocated((By.xpath("//td[text()='" + text + "']")), driver);
         return this;
     }
 }
