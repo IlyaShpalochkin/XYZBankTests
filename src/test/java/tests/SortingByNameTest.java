@@ -38,13 +38,13 @@ public class SortingByNameTest extends BasicTestClass {
         driver.get(Constants.MAIN_PAGE);
         mainPage.clickCustomersButton();
         customersPage.waitingLoadingListCustomersSize(5);
-        ArrayList<String> firstNameFirstList = customersPage.firstNameCustomersList();
+        ArrayList<String> firstNameFirstList = customersPage.customersFirstNames();
         customersPage.clickSortByFirstNameButton();
-        ArrayList<String> reverseSortFirstNameList = customersPage.firstNameCustomersList();
+        ArrayList<String> reverseSortFirstNameList = customersPage.customersFirstNames();
         Collections.sort(firstNameFirstList, Collections.reverseOrder());
         Assert.assertEquals(firstNameFirstList, reverseSortFirstNameList, "Список не отсортирован в обратном порядке");
         customersPage.clickSortByFirstNameButton();
-        ArrayList<String> sortFirstNameList = customersPage.firstNameCustomersList();
+        ArrayList<String> sortFirstNameList = customersPage.customersFirstNames();
         Collections.sort(firstNameFirstList);
         Assert.assertEquals(sortFirstNameList, firstNameFirstList, "Список не отсортирован в алфовитном порядке");
     }

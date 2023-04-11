@@ -33,11 +33,11 @@ public class CustomersPage {
 
     private By rows = By.cssSelector("tbody tr");
 
-    public String getPostCodeFirstCustomerText() {
+    public String getPostCodeFirstCustomer() {
         return getRowsList().get(0).getCellText(2);
     }
 
-    public String getLastNameFirstCustomerText() {
+    public String getLastNameFirstCustomer() {
         return getRowsList().get(0).getCellText(1);
     }
 
@@ -58,7 +58,7 @@ public class CustomersPage {
         return getRowsList().get(0).getCellText(0);
     }
 
-    public ArrayList<String> firstNameCustomersList() {
+    public ArrayList<String> customersFirstNames() {
         return (ArrayList<String>) new CustomersPage(driver).getRowsList().stream().map(it -> it.getCellText(0)).collect(Collectors.toList());
     }
 
@@ -88,7 +88,7 @@ public class CustomersPage {
     }
 
     @Step("Ожидание ячейки с текстом text")
-    public CustomersPage waitingCellWithTextVisible(String text) {
+    public CustomersPage waitingVisibilityOfCellWithText(String text) {
         Waiting.waitingElementDisplayByLocator((By.xpath("//td[text()='" + text + "']")), driver);
         return this;
     }
