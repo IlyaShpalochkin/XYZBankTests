@@ -1,4 +1,4 @@
-package tests;
+package tests.globalsqa;
 
 import constants.Constants;
 import io.qameta.allure.Severity;
@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomersPage;
 import pages.MainPage;
+import tests.BasicTestClass;
 
 import java.util.ArrayList;
 import java.util.Collections;

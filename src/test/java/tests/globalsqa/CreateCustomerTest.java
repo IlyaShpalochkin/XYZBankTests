@@ -1,4 +1,4 @@
-package tests;
+package tests.globalsqa;
 
 import constants.Constants;
 import helpers.AlertHelper;
@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import pages.AddCustomerPage;
 import pages.CustomersPage;
 import pages.MainPage;
+import tests.BasicTestClass;
 
 
 @Epic("Тесты сайта globalsqa")
