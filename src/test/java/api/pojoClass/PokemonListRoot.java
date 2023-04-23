@@ -9,11 +9,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
-public class PokemonRoot {
-    private Integer weight;
 
-    private String name;
-
-    private List<AbilityWrapper> abilities;
-
+public class PokemonListRoot {
+    private List<Results> results;
 }
