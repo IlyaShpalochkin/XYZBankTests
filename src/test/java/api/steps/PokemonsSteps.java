@@ -20,22 +20,20 @@ public class PokemonsSteps {
 
     @Step("Отправка Get запроса для получения root")
     public static PokemonRoot getPokemonRoot(String pokemonLink) {
-        PokemonRoot pokemonRoot = given().spec(REQ_SPEC).basePath(pokemonLink)
+        return given().spec(REQ_SPEC).basePath(pokemonLink)
                 .when().get()
                 .then()
                 .statusCode(200)
                 .extract().body().as(PokemonRoot.class);
-        return pokemonRoot;
     }
 
     @Step("Получение списка покемонов")
     public static PokemonListRoot getPokemonListRoot() {
-        PokemonListRoot pokemonListRoot = given().spec(REQ_SPEC)
+        return given().spec(REQ_SPEC)
                 .basePath(Constants.POKEMON_LIMIT)
                 .when().get()
                 .then()
                 .statusCode(200)
                 .extract().body().as(PokemonListRoot.class);
-        return pokemonListRoot;
     }
 }

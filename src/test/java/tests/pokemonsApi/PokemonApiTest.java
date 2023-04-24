@@ -3,7 +3,10 @@ package tests.pokemonsApi;
 
 import api.pojoClass.Ability;
 import api.pojoClass.AbilityWrapper;
+import api.pojoClass.PokemonRoot;
+import api.pojoClass.PokemonListRoot;
 import api.pojoClass.Results;
+
 import api.steps.PokemonsSteps;
 import constants.Constants;
 import io.qameta.allure.Severity;
@@ -23,9 +26,11 @@ public class PokemonApiTest {
     @Story("Тест на сравнение параметров у покемонов")
     @Test
     public void comparisonPokemonsParametersTest() {
-        Assert.assertTrue(PokemonsSteps.getPokemonRoot(Constants.RATTATA_LINK).getWeight() < PokemonsSteps.getPokemonRoot(Constants.PIDGEOTTO_LINK).getWeight(), "У покемона rattata вес не меньше, чем у pidgeottto");
-        assertThat(PokemonsSteps.getPokemonRoot(Constants.RATTATA_LINK).getAbilities()).extracting(AbilityWrapper::getAbility).extracting(Ability::getName).contains("run-away");
-        assertThat(PokemonsSteps.getPokemonRoot(Constants.PIDGEOTTO_LINK).getAbilities()).extracting(AbilityWrapper::getAbility).extracting(Ability::getName).doesNotContain("run-away");
+        PokemonRoot rattataRoot = PokemonsSteps.getPokemonRoot(Constants.RATTATA_LINK);
+        PokemonRoot pidgeottoRoot = PokemonsSteps.getPokemonRoot(Constants.PIDGEOTTO_LINK);
+        Assert.assertTrue(rattataRoot.getWeight() < pidgeottoRoot.getWeight(), "У покемона rattata вес не меньше, чем у pidgeottto");
+        assertThat(rattataRoot.getAbilities()).extracting(AbilityWrapper::getAbility).extracting(Ability::getName).contains("run-away");
+        assertThat(pidgeottoRoot.getAbilities()).extracting(AbilityWrapper::getAbility).extracting(Ability::getName).doesNotContain("run-away");
     }
 
     @Severity(value = SeverityLevel.NORMAL)
@@ -33,7 +38,8 @@ public class PokemonApiTest {
     @Story("Тест на проверку лимита")
     @Test
     public void checkLimitPokemonsTest() {
-        assertThat(PokemonsSteps.getPokemonListRoot().getResults()).extracting(Results::getLink).hasSize(20);
-        assertThat(PokemonsSteps.getPokemonListRoot().getResults()).extracting(Results::getName).doesNotContain("");
+        PokemonListRoot pokemonListRoot = PokemonsSteps.getPokemonListRoot();
+        assertThat(pokemonListRoot.getResults()).extracting(Results::getLink).hasSize(20);
+        assertThat(pokemonListRoot.getResults()).extracting(Results::getName).doesNotContain("");
     }
 }
