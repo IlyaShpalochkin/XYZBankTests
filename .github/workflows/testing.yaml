@@ -19,10 +19,6 @@ jobs:
         if: always()
         run: mvn package
         continue-on-error: true
-
-        with:
-        ref: gh-pages
-        path: gh-pages
       - name: Build Report
         uses: simple-elf/allure-report-action@master
         if: always()
