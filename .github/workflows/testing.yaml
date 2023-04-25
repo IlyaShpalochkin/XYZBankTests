@@ -19,13 +19,19 @@ jobs:
         if: always()
         run: mvn package
         continue-on-error: true
+      - name: Copy History
+        uses: actions/checkout@v2
+        if: always()
+        with:
+          ref: gh-pages
+          path: gh-pages
       - name: Build Report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-        allure_results: target/allure-results
-        allure_history: allure-history
-        keep_reports: 20
+          allure_results: target/allure-results
+          allure_history: allure-history
+          keep_reports: 20
       - name: Publish Report
         if: always()
         uses: peaceiris/actions-gh-pages@v2
