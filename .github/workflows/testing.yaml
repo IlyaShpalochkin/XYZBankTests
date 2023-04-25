@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Run the Maven verify phase
+      - name: Run the Maven
         run: mvn --batch-mode --update-snapshots verify
       - name: Run Test
         if: always()
