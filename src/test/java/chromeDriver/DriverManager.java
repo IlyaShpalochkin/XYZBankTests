@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverManager {
     static {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/chromedriver");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
     }
 
     public static ChromeDriver getChromeDriver() {
