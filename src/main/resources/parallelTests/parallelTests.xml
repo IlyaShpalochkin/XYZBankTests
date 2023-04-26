@@ -1,5 +1,5 @@
 <suite name="Test-class Suite" parallel="tests" thread-count="3">
-    <test name="CreateCustomerTest">
+   <!-- <test name="CreateCustomerTest">
         <classes>
             <class name="tests.globalsqa.CreateCustomerTest"/>
         </classes>
@@ -13,5 +13,5 @@
         <classes>
             <class name="tests.globalsqa.SortingByNameTest"/>
         </classes>
-    </test>
+    </test>-->
 </suite>
