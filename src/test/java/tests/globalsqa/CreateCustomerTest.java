@@ -8,6 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AddCustomerPage;
@@ -48,5 +49,10 @@ public class CreateCustomerTest extends BasicTestClass {
         Assert.assertEquals(customersPage.getFirstNameAtLastCustomer(), "Ilya", "Имя последнего клиента в списке не Ilya");
         Assert.assertEquals(customersPage.getLastNameAtLastCustomer(), "Ponomarev", "Фамилия последнего клиента в списке не Ponomarev");
         Assert.assertEquals(customersPage.getPostCodeAtLastCustomer(), "Code1111", "Почтовый индекс последнего клиента в списке не Code1111");
+    }
+
+    @AfterTest
+    public void closeDriver() {
+        driver.quit();
     }
 }

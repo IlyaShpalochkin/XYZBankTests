@@ -9,6 +9,7 @@ import io.qameta.allure.Story;
 
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CustomersPage;
@@ -48,5 +49,10 @@ public class SortingByNameTest extends BasicTestClass {
         ArrayList<String> sortFirstNameList = customersPage.customersFirstNames();
         Collections.sort(firstNameFirstList);
         Assert.assertEquals(sortFirstNameList, firstNameFirstList, "Список не отсортирован в алфовитном порядке");
+    }
+
+    @AfterTest
+    public void closeDriver() {
+        driver.quit();
     }
 }
