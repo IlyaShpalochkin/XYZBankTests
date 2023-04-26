@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"23380d48e27a0c66cd5455135d199d89","name":"Тесты сайта globalsqa","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"cbb058293725917408edd8d2a87bf75c","name":"Api Тесты сайта pokeapi","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
