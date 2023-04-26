@@ -1,6 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Apr 26 19:38:04 GMT 2023","Wed Apr 26 19:38:06 GMT 2023","1844","Surefire suite","Surefire test","tests.globalsqa.SearchCustomerTest","tests.globalsqa.SearchCustomerTest","searchCustomerTest","searchCustomerTest",""
-"passed","Wed Apr 26 19:38:06 GMT 2023","Wed Apr 26 19:38:09 GMT 2023","2904","Surefire suite","Surefire test","tests.pokemonsApi.PokemonApiTest","tests.pokemonsApi.PokemonApiTest","checkLimitPokemonsTest","checkLimitPokemonsTest",""
-"passed","Wed Apr 26 19:37:59 GMT 2023","Wed Apr 26 19:38:01 GMT 2023","1975","Surefire suite","Surefire test","tests.globalsqa.SortingByNameTest","tests.globalsqa.SortingByNameTest","sortingByNameTest","sortingByNameTest",""
-"passed","Wed Apr 26 19:38:09 GMT 2023","Wed Apr 26 19:38:09 GMT 2023","430","Surefire suite","Surefire test","tests.pokemonsApi.PokemonApiTest","tests.pokemonsApi.PokemonApiTest","comparisonPokemonsParametersTest","comparisonPokemonsParametersTest",""
-"passed","Wed Apr 26 19:38:01 GMT 2023","Wed Apr 26 19:38:04 GMT 2023","2500","Surefire suite","Surefire test","tests.globalsqa.CreateCustomerTest","tests.globalsqa.CreateCustomerTest","createClientTest","createClientTest",""
