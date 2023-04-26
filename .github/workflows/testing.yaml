@@ -15,8 +15,8 @@ jobs:
           distribution: 'temurin'
       - name: Install Google Chrome
         run: |
-          chmod +x ./scripts/InstallChrome.sh
-                      ./scripts/InstallChrome.sh
+            echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
       - name: Run Test
