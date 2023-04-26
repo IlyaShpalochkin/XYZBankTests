@@ -16,10 +16,7 @@ jobs:
           distribution: 'temurin'
       - uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: latest
-      - run: |
-          chmod +x ./scripts/InstallChrome.sh
-                      ./scripts/InstallChrome.sh
+          chrome-version: stable
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
       - name: Run Test
