@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverManager {
     static {
-        WebDriverManager.chromedriver();
+        WebDriverManager.chromedriver().driverVersion("");
     }
 
     public static ChromeDriver getChromeDriver() {

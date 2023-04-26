@@ -15,6 +15,8 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
       - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: '113.0.5672.24'
       - run: chrome --version
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
