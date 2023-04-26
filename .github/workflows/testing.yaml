@@ -26,7 +26,9 @@ jobs:
       - name: Copy History
         uses: actions/checkout@v2
         if: always()
-
+        with:
+          ref: allure
+          path: allure
       - name: Build Report
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -39,7 +41,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          PUBLISH_BRANCH: allure
           PUBLISH_DIR: allure-history
 
 
